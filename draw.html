@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="p5/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+      function setup() {
+        createCanvas(w,h);
+      }
+      
+      function draw() {
+        fill(color(78,78,178));
+        strokeWeight(0);
+        ellipse(random(50,w-50),random(50,h-50),20,20);
+        
+        fill(color(200,50,50));
+        strokeWeight(0);
+        rect(random(50,w-50),random(50,h-50),20,20);
+        
+        fill(color(255,255,0));
+        strokeWeight(0);
+        ellipse(random(50,w-50),random(50,h-50),20,20);
+        
+        fill(color("white"));
+        strokeWeight(0);
+        ellipse(mouseX,mouseY, 50, 50);
+      }
+    </script>
+  </body>
+</html>

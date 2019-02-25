@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script src="p5/p5.min.js"></script>
+    
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    
+    <div class="container">
+      R<input type="number" id="changeR" min="0" max="256">
+      G<input type="number" id="changeG" min="0" max="256">
+      B<input type="number" id="changeB" min="0" max="256">
+    </div>
+    
+    
+    <script>
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var r = 0;
+      var g = 0;
+      var b = 0;
+      
+      function setup() {
+        createCanvas(w,h);
+      }
+      
+      function keyPressed() {
+        
+        if (keyCode === ENTER) {
+          var cr = document.getElementById("changeR").value;
+          var cg = document.getElementById("changeG").value;
+          var cb = document.getElementById("changeB").value;
+          r = cr;
+          g = cg;
+          b = cb;
+        }
+      }
+      
+      function draw() {
+        if (mouseIsPressed) {
+          stroke(color(r,g,b));
+          strokeWeight(5);
+          line(pmouseX,pmouseY, mouseX,mouseY);
+        }
+      }
+    </script>
+  </body>
+</html>

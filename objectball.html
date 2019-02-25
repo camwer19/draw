@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <script src="p5/p5.min.js"></script>
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+      
+      #coord {
+        z-index:-1;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="coord"></p>
+    <script>
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var ball = new ball(); //global object
+      var sp = 10;
+      var wi = 50;
+      
+      
+      
+      function setup() {
+        createCanvas(w,h);
+      }
+      
+      function draw() {
+        background(255);
+        ball.show();
+        ball.move();
+        document.getElementById("coord").innerHTML = ball.x + ", " + ball.y;
+      }
+      
+      
+      
+      function ball() {
+        this.x = 100;
+        this.y = 100;
+        this.show = function() {
+          fill(color(78,78,178));
+          strokeWeight(0);
+          ellipse(this.x,this.y,wi,wi);
+        }
+        this.move = function() {
+          if (keyIsDown(65) && (this.x-wi > 0)) {
+            this.x -= sp;
+          }
+          
+          if (keyIsDown(68) && (this.x < w-wi)) {
+            this.x += sp;
+          }
+          
+          if (keyIsDown(87) && (this.y-wi > 0)) {
+           this.y -= sp;
+          }
+          
+          if (keyIsDown(83) && (this.y < h-wi)) {
+            this.y += sp;
+          }
+        }
+      }
+      
+      
+    </script>
+  </body>
+</html>
