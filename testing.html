@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="p5/p5.min.js"></script>
+    
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var userSpeed = 10;
+      var ball = new ball();
+      
+      
+      
+      function setup() {
+        createCanvas(w,h);
+      }
+      
+      
+      function draw() {
+        background(255);
+        fill(color(0,0,0));
+        strokeWeight(1);
+        translate(0,100);
+        translate(p5.Vector.fromAngle(millis() / 100, 50));
+        ellipse(100,100, 30,30);
+        
+        
+      }
+      
+    </script>
+  </body>
+</html>

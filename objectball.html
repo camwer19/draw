@@ -7,14 +7,9 @@
         margin: 0;
         padding: 0;
       }
-      
-      #coord {
-        z-index:-1;
-      }
     </style>
   </head>
   <body>
-    <p id="coord"></p>
     <script>
       var w = window.innerWidth;
       var h = window.innerHeight;
@@ -32,7 +27,7 @@
         background(255);
         ball.show();
         ball.move();
-        document.getElementById("coord").innerHTML = ball.x + ", " + ball.y;
+        ball.shoot();
       }
       
       
@@ -64,6 +59,30 @@
         }
       }
       
+     function shoot() {
+       
+        if (keyPressed(38)) { //up
+          fill(color(0,0,0));
+          strokeWeight(1);
+          ellipse(ball.x,ball.y, 10,10);
+          ellipseMode(CENTER);
+          translate(h);
+          
+          
+        }
+          
+        if (keyPressed(40)) { //down
+            
+        }
+          
+        if (keyPressed(39)) { //right
+           
+        }
+          
+        if (keyPressed(37)) { //left
+            
+        }
+      }
       
     </script>
   </body>
