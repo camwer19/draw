@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <script src="p5/p5.min.js"></script>
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      
+      
+      
+      function setup() {
+        createCanvas(w,h);
+        
+        //frameRate affects speed. less is faster.
+        frameRate(30);
+        rectMode(CENTER);
+      }
+      
+      function draw() {
+        //Set how far the rect. goes
+        var step = frameCount % 20;
+        var step1 = frameCount % 1000;
+        
+        var angle = map(step, 20, 100, 0, TWO_PI);
+        var cos_a = cos(angle);
+        var sin_a = sin(angle);
+        
+        background(200);
+        /*applyMatrix(a, b, c, d, e, f);
+        ◢ e is along the x axis
+        ◢ f is along the y axis
+        
+        a, b, c, d, affect the rect. itself, such as bending it.
+        These were speculated when the matrix was at (0,6,6,0, e,f)
+        
+        ◢ a shifts the bottom two corners to the right+
+        ◢ b shifts the bottom two corners downwards
+        ◢ c shifts the top and bottom right corners to the right
+        ◢ d shifts the top and bottom right corners downwards
+        
+        Take care to note that when (a and d) or (b and c) share the same #, they form a square when the other pair are zeros. otherwise it will continue to skew the rect
+        
+        By adding + step to e, it will transform the rect to the right
+        Adding + step to f will tranform it downwards
+        
+        By dividing b and c by step, it will cause it to shrink into itself, until it reaches step.
+        
+        I'm really bad at trig but looks like we fucking need it for some goddamn rotations
+        
+        var angle = map(step, 0, 20, 0, TWO_PI);
+        map breaks down to map(value, start1, stop1, start2, stop2, [withinBounds]);
+          value	Number: the incoming value to be converted
+          start1	Number: lower bound of the value's current range
+          stop1	Number: upper bound of the value's current range
+          start2	Number: lower bound of the value's target range
+          stop2	Number: upper bound of the value's target range
+          withinBounds	Boolean: constrain the value to the newly mapped range
+        
+        The rotation given causes it to turn clockwise.
+        The closer start1 got to stop1, the rect began turning counterclockwise. When the numbers became very close (18, 20) it just started shaking.
+        Then I boosted start1 to 500. It turns counterclockwise incredibly slowly.
+        
+        Fuck you just go experiment
+        
+        */
+        applyMatrix(cos_a, sin_a, -sin_a, cos_a, 100 + step1, 100);
+        rect(0, 0, 50, 50);
+      }
+    </script>
+  </body>
+</html>
